@@ -4,6 +4,7 @@ using filmes_series.domain.interfaces.repository;
 using filmes_series.domain.interfaces.services;
 using filmes_series.domain.service;
 using filmes_series.service.appService;
+using filmes_series.service.dto;
 using filmes_series.service.interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,6 +43,11 @@ app.MapGet("/", () => "Hello World!");
 app.MapGet("/v1/ator/todos", (IAtorAppService atorAppService) =>
 {
     return atorAppService.ObterTodosDTO();
+});
+
+app.MapPost("/v1/ator/add", (IAtorAppService atorAppService,AtorDTO atorDTO) =>
+{
+    return atorAppService.Adicionar(atorDTO);
 });
 
 app.UseSwaggerUI();
