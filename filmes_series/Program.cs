@@ -10,10 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Conexão
-//string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-//builder.Services.AddDbContext<AppDbContext>();
-
+//DI
 builder.Services.AddTransient<IAtorRepository, AtorRepository>();
 builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddTransient<IProducaoRepository, ProducoesRepository>();
@@ -35,8 +32,6 @@ var app = builder.Build();
 
 app.UseSwagger();
 
-
-// Endpoints da solução
 app.MapGet("/", () => "Hello World!");
 
 //// Listar Atores.
@@ -50,5 +45,12 @@ app.MapPost("/v1/ator/add", (IAtorAppService atorAppService,AtorDTO atorDTO) =>
     return atorAppService.Adicionar(atorDTO);
 });
 
-app.UseSwaggerUI();
+app.UseSwaggerUI(
+    c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAPI V1");
+        c.RoutePrefix = string.Empty;
+    }
+);
+
 app.Run();
