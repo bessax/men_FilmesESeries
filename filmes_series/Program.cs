@@ -1,13 +1,7 @@
-using filmes_series.data.context;
-using filmes_series.data.repository;
-using filmes_series.domain.interfaces.repository;
-using filmes_series.domain.interfaces.services;
-using filmes_series.domain.service;
-using filmes_series.service.appService;
-using filmes_series.service.dto;
 using filmes_series.service.interfaces;
+using filmes_series.service.request_response;
 using filmes_series.startup;
-using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +14,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-
 app.UseSwagger();
 
 app.MapGet("/", () => "Hello World!");
@@ -32,7 +24,7 @@ app.MapGet("/v1/ator/todos", (IAtorAppService atorAppService) =>
     return atorAppService.ObterTodosDTO();
 });
 
-app.MapPost("/v1/ator/add", (IAtorAppService atorAppService,AtorDTO atorDTO) =>
+app.MapPost("/v1/ator/add", (IAtorAppService atorAppService,AtorRequest atorDTO) =>
 {
     return atorAppService.Adicionar(atorDTO);
 });

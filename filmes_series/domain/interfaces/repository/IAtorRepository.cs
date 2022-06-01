@@ -1,13 +1,10 @@
-﻿using filmes_series.domain.entity;
+﻿using filmes_series._base.baserepository;
+using filmes_series.domain.entity;
 
 namespace filmes_series.domain.interfaces.repository
 {
-    public interface IAtorRepository : IDisposable
+    public interface IAtorRepository :IBaseRepository<Ator>,IDisposable
     {
-        public List<Ator> FindAll();
-        public Ator GetById(int id); 
-        public bool Adicionar(Ator _ator);
-        public bool Atualizar(int id, Ator _ator);
-        public bool Excluir(int id);
+
     }
 }

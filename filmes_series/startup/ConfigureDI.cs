@@ -5,28 +5,27 @@ using filmes_series.domain.service;
 using filmes_series.service.appService;
 using filmes_series.service.interfaces;
 
-namespace filmes_series.startup
+namespace filmes_series.startup;
+
+public static class ConfigureDIConfig
 {
-    public static class ConfigureDIConfig
+    public static void ConfigureDI(this IServiceCollection services)
     {
-        public static void ConfigureDI(this IServiceCollection services)
-        {
-            ConfigureAppServices(services);
-        }
+        ConfigureAppServices(services);
+    }
 
-        internal static void ConfigureAppServices(IServiceCollection services)
-        {
-            services.AddTransient<IAtorRepository, AtorRepository>();
-            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-            services.AddTransient<IProducaoRepository, ProducoesRepository>();
+    internal static void ConfigureAppServices(IServiceCollection services)
+    {
+        services.AddTransient<IAtorRepository, AtorRepository>();
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+        services.AddTransient<IProducaoRepository, ProducoesRepository>();
 
-            services.AddTransient<IAtorService, AtorService>();
-            services.AddTransient<ICategoriaService, CategoriaService>();
-            services.AddTransient<IProducaoService, ProducaoService>();
+        services.AddTransient<IAtorService, AtorService>();
+        services.AddTransient<ICategoriaService, CategoriaService>();
+        services.AddTransient<IProducaoService, ProducaoService>();
 
-            services.AddTransient<IAtorAppService, AtorAppService>();
-            services.AddTransient<ICategoriaAppService, CategoriaAppService>();
-            services.AddTransient<IProducaoAppService, ProducaoAppService>();
-        }
+        services.AddTransient<IAtorAppService, AtorAppService>();
+        services.AddTransient<ICategoriaAppService, CategoriaAppService>();
+        services.AddTransient<IProducaoAppService, ProducaoAppService>();
     }
 }

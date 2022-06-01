@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.services;
-using filmes_series.service.dto;
 using filmes_series.service.interfaces;
+using filmes_series.service.request_response;
 
 namespace filmes_series.service.appService
 {
@@ -14,7 +14,7 @@ namespace filmes_series.service.appService
         {
             _service = service;
             var config = new MapperConfiguration(cfg =>
-                   cfg.CreateMap<Ator, AtorDTO>().ReverseMap());
+                   cfg.CreateMap<Ator, AtorRequest>().ReverseMap());
             _mapper = new(config);
         }
 
@@ -24,14 +24,14 @@ namespace filmes_series.service.appService
             GC.SuppressFinalize(this);
         }
 
-        public bool Adicionar(AtorDTO _ator)
+        public bool Adicionar(AtorRequest _ator)
         {
-            return _service.Adicionar(_mapper.Map<AtorDTO, Ator>(_ator));
+            return _service.Adicionar(_mapper.Map<AtorRequest, Ator>(_ator));
         }
 
-        public bool Atualizar(int id, AtorDTO _ator)
+        public bool Atualizar(int id, AtorRequest _ator)
         {
-            return _service.Atualizar(id,_mapper.Map<AtorDTO, Ator>(_ator));
+            return _service.Atualizar(id,_mapper.Map<AtorRequest, Ator>(_ator));
         }
 
         public bool ExcluirDTO(int id)
@@ -39,14 +39,14 @@ namespace filmes_series.service.appService
             return _service.Excluir(id);
         }
 
-        public AtorDTO ObterPorIdDTO(int id)
+        public AtorRequest ObterPorIdDTO(int id)
         {
-            return _mapper.Map<Ator, AtorDTO>(_service.ObterPorId(id));
+            return _mapper.Map<Ator, AtorRequest>(_service.ObterPorId(id));
         }
-        public List<AtorDTO> ObterTodosDTO()
+        public List<AtorRequest> ObterTodosDTO()
         {
             var atores = _service.ObterTodos();
-            List<AtorDTO> atoresDTO = _mapper.Map<List<Ator>, List<AtorDTO>>(atores);
+            List<AtorRequest> atoresDTO = _mapper.Map<List<Ator>, List<AtorRequest>>(atores);
             return atoresDTO;
         }
     }

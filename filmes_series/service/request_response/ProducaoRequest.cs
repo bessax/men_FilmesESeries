@@ -1,6 +1,6 @@
-﻿namespace filmes_series.service.dto
+﻿namespace filmes_series.service.request_response
 {
-    public class ProducaoDTO
+    public class ProducaoRequest
     {
         public int Id { get; set; }     
         public string Nome { get; set; }       
@@ -8,7 +8,7 @@
         public string Diretor { get; set; }
         public string Estudio { get; set; }
         public DateTime? DataLancamento { get; set; }
-        public virtual List<AtorDTO> ElencoDTO { get; set; }
-        public virtual List<CategoriaDTO> CategoriasDTO { get; set; }
+        public virtual List<AtorRequest> ElencoDTO { get; set; }
+        public virtual List<CategoriaRequest> CategoriasDTO { get; set; }
     }
 }
