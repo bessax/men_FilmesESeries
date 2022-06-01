@@ -6,29 +6,21 @@ using filmes_series.domain.service;
 using filmes_series.service.appService;
 using filmes_series.service.dto;
 using filmes_series.service.interfaces;
+using filmes_series.startup;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //DI
-builder.Services.AddTransient<IAtorRepository, AtorRepository>();
-builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-builder.Services.AddTransient<IProducaoRepository, ProducoesRepository>();
-
-builder.Services.AddTransient<IAtorService, AtorService>();
-builder.Services.AddTransient<ICategoriaService, CategoriaService>();
-builder.Services.AddTransient<IProducaoService, ProducaoService>();
-
-builder.Services.AddTransient<IAtorAppService, AtorAppService>();
-builder.Services.AddTransient<ICategoriaAppService, CategoriaAppService>();
-builder.Services.AddTransient<IProducaoAppService, ProducaoAppService>();
-
+builder.Services.ConfigureDI();
 
 //Habilitando o swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+
 
 app.UseSwagger();
 
