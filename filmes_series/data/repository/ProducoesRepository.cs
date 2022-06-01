@@ -8,16 +8,10 @@ namespace filmes_series.data.repository
 {
     public class ProducoesRepository : BaseRepository<Producao>, IProducaoRepository
     {
-        private readonly AppDbContext _context;
+        public ProducoesRepository(AppDbContext _context) : base(_context)
+        {
+            
+        }
 
-        public ProducoesRepository()
-        {
-            _context = new AppDbContext();
-        }
-        public void Dispose()
-        {
-            _context.Dispose();
-            GC.SuppressFinalize(this);
-        }
     }
 }

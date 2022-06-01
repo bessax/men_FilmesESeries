@@ -5,12 +5,12 @@ namespace filmes_series._base.baserepository
 {
     public class BaseRepository<TEntity>:IBaseRepository<TEntity> where TEntity:class
     {
-        private readonly AppDbContext _context;
+        private readonly DbContext _context;
         private DbSet<TEntity> dbset;
 
-        public BaseRepository()
+        public BaseRepository(DbContext context)
         {
-            _context = new AppDbContext();
+            _context = context;
             dbset = _context.Set<TEntity>();
         }
         public bool Adicionar(TEntity _entity)

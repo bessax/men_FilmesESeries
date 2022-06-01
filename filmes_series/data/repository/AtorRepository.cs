@@ -7,18 +7,11 @@ using Microsoft.EntityFrameworkCore;
 namespace filmes_series.data.repository
 {
     public class AtorRepository : BaseRepository<Ator>,IAtorRepository
-    {
-        private readonly AppDbContext _context;
-
-        public AtorRepository()
+    {       
+        public AtorRepository(AppDbContext _context):base(_context)
         {
-            _context = new AppDbContext();
-        }
         
-        public void Dispose()
-        {
-            _context.Dispose();
-            GC.SuppressFinalize(this);
         }
+ 
     }
 }
