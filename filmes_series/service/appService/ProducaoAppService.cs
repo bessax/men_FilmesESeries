@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.services;
+using filmes_series.mapper;
 using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 
@@ -12,10 +13,8 @@ namespace filmes_series.service.appService
         private readonly Mapper _mapper;
         public ProducaoAppService(IProducaoService service)
         {
-            _service = service;
-            var config = new MapperConfiguration(cfg =>
-                   cfg.CreateMap<Producao, ProducaoRequest>().ReverseMap());
-            _mapper = new(config);
+            _service = service;            
+            _mapper = new(new(AutoMapperConfig<Producao, ProducaoRequest>.ConfigureMapper());
         }
 
         public void Dispose()

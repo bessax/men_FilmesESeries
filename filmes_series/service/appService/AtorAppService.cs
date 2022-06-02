@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.services;
+using filmes_series.mapper;
 using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 
@@ -13,9 +14,7 @@ namespace filmes_series.service.appService
         public AtorAppService(IAtorService service)
         {
             _service = service;
-            var config = new MapperConfiguration(cfg =>
-                   cfg.CreateMap<Ator, AtorRequest>().ReverseMap());
-            _mapper = new(config);
+            _mapper = new(AutoMapperConfig<Ator, AtorRequest>.ConfigureMapper());
         }
 
         public void Dispose()

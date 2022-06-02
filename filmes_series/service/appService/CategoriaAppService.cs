@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.services;
+using filmes_series.mapper;
 using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 
@@ -12,11 +13,10 @@ namespace filmes_series.service.appService
         private readonly Mapper _mapper;
         public CategoriaAppService(ICategoriaService service)
         {
-            _service = service;
-            var config = new MapperConfiguration(cfg =>
-                   cfg.CreateMap<Categoria, CategoriaRequest>().ReverseMap());
-            _mapper = new(config);
+            _service = service;            
+            _mapper = new(AutoMapperConfig<Categoria, CategoriaRequest>.ConfigureMapper());
         }
+        
 
         public void Dispose()
         {
