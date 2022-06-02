@@ -7,4 +7,5 @@ public interface IBaseRepository<T> where T : class
     public bool Adicionar(T _obj);
     public bool Atualizar(int id, T _obj);
     public bool Excluir(int id);
+  
 }

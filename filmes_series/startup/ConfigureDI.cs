@@ -1,5 +1,8 @@
-﻿using filmes_series.data.context;
+﻿using filmes_series._base.baserepository;
+using filmes_series._base.baseservice;
+using filmes_series.data.context;
 using filmes_series.data.repository;
+using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.repository;
 using filmes_series.domain.interfaces.services;
 using filmes_series.domain.service;
@@ -18,6 +21,7 @@ public static class ConfigureDIConfig
     internal static void ConfigureAppServices(IServiceCollection services)
     {
         services.AddScoped<AppDbContext>();
+                  
         services.AddTransient<IAtorRepository, AtorRepository>();
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<IProducaoRepository, ProducoesRepository>();

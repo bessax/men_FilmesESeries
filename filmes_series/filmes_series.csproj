@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="_base\baseservice\" />
     <Folder Include="controllers\" />
   </ItemGroup>
 
