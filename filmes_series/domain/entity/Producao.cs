@@ -6,9 +6,10 @@ public class Producao
 {
     public Producao()
     {
-        this.Categorias = new List<Categoria>();
-        this.Elenco = new List<Ator>();
-      
+        this.Categorias = new List<Categoria>();      ;
+        // this.Elenco = new List<Ator>();
+        this.AtorProducao = new List<AtorProducao>();
+
     }
     public int Id { get; set; }
 
@@ -25,9 +26,9 @@ public class Producao
     public string Estudio { get; set; }
 
     public DateTime? DataLancamento { get; set; }
-    public virtual List<Ator> Elenco { get; set; }
+    //public virtual List<Ator> Elenco { get; set; }
     public virtual List<Categoria> Categorias { get; set; }
 
-   public ICollection<AtorProducao> AtorProducao { get; set; }
+    public List<AtorProducao> AtorProducao { get; set; }
 
 }

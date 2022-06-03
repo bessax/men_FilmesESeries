@@ -17,14 +17,14 @@ namespace filmes_series._base.baserepository
         {
             try
             {
-                _context.AddAsync(_entity);
+                _context.Add(_entity);
                 _context.SaveChanges();
 
                 return _entity;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Erro ao adicionar.");
+                throw new Exception("Erro ao adicionar."+ ex.Message);
             }
         }
 
@@ -42,9 +42,9 @@ namespace filmes_series._base.baserepository
                 _context.SaveChanges();
                return _obj;
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Erro ao atualizar."); 
+                throw new Exception("Erro ao atualizar." + ex.Message);
             }
         }
 

@@ -8,7 +8,6 @@
         public string Diretor { get; set; }
         public string Estudio { get; set; }
         public DateTime? DataLancamento { get; set; }
-        public virtual List<AtorRequest> ElencoDTO { get; set; }
-        public virtual List<CategoriaRequest> CategoriasDTO { get; set; }
+       
     }
 }

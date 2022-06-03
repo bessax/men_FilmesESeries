@@ -19,21 +19,6 @@ namespace filmes_series.Migrations
                 .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("AtorProducao", b =>
-                {
-                    b.Property<int>("ElencoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProducoesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ElencoId", "ProducoesId");
-
-                    b.HasIndex("ProducoesId");
-
-                    b.ToTable("AtorProducao");
-                });
-
             modelBuilder.Entity("filmes_series.domain.entity.Ator", b =>
                 {
                     b.Property<int>("Id")
@@ -48,6 +33,27 @@ namespace filmes_series.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Atores");
+                });
+
+            modelBuilder.Entity("filmes_series.domain.entity.AtorProducao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ElencoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProducoesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ElencoId");
+
+                    b.HasIndex("ProducoesId");
+
+                    b.ToTable("AtorProducao");
                 });
 
             modelBuilder.Entity("filmes_series.domain.entity.Categoria", b =>
@@ -82,6 +88,9 @@ namespace filmes_series.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("AtorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Classificacao")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -111,6 +120,8 @@ namespace filmes_series.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AtorId");
+
                     b.ToTable("Producoes");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Producao");
@@ -137,19 +148,23 @@ namespace filmes_series.Migrations
                     b.HasDiscriminator().HasValue("Serie");
                 });
 
-            modelBuilder.Entity("AtorProducao", b =>
+            modelBuilder.Entity("filmes_series.domain.entity.AtorProducao", b =>
                 {
-                    b.HasOne("filmes_series.domain.entity.Ator", null)
-                        .WithMany()
+                    b.HasOne("filmes_series.domain.entity.Ator", "Elenco")
+                        .WithMany("AtorProducao")
                         .HasForeignKey("ElencoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("filmes_series.domain.entity.Producao", null)
-                        .WithMany()
+                    b.HasOne("filmes_series.domain.entity.Producao", "Producoes")
+                        .WithMany("AtorProducao")
                         .HasForeignKey("ProducoesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Elenco");
+
+                    b.Navigation("Producoes");
                 });
 
             modelBuilder.Entity("filmes_series.domain.entity.Categoria", b =>
@@ -161,6 +176,22 @@ namespace filmes_series.Migrations
 
             modelBuilder.Entity("filmes_series.domain.entity.Producao", b =>
                 {
+                    b.HasOne("filmes_series.domain.entity.Ator", null)
+                        .WithMany("Producoes")
+                        .HasForeignKey("AtorId");
+                });
+
+            modelBuilder.Entity("filmes_series.domain.entity.Ator", b =>
+                {
+                    b.Navigation("AtorProducao");
+
+                    b.Navigation("Producoes");
+                });
+
+            modelBuilder.Entity("filmes_series.domain.entity.Producao", b =>
+                {
+                    b.Navigation("AtorProducao");
+
                     b.Navigation("Categorias");
                 });
 #pragma warning restore 612, 618

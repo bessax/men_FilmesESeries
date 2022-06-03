@@ -6,5 +6,7 @@ namespace filmes_series.domain.interfaces.repository
     public interface IAtorProducaoRepository: IBaseRepository<AtorProducao>, IDisposable
     {
 
+        List<AtorProducao> ObterTodos();
+    
     }
 }

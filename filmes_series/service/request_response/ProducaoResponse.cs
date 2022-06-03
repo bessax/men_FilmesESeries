@@ -10,9 +10,9 @@ namespace filmes_series.service.request_response
         public string Diretor { get; set; }
         public string Estudio { get; set; }
         public DateTime? DataLancamento { get; set; }
-        [JsonIgnore]
-        public virtual List<AtorRequest> ElencoDTO { get; set; }
-        [JsonIgnore]
+
+        //public virtual List<AtorRequest> ElencoDTO { get; set; }
+        public virtual List<AtorProducaoRequest> ElencoDTO { get; set; }
         public virtual List<CategoriaRequest> CategoriasDTO { get; set; }
     }
 }

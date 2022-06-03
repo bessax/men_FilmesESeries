@@ -8,9 +8,7 @@ namespace filmes_series.service.request_response
         public int ElencoId { get; set; }
         public int ProducoesId { get; set; }
 
-        [JsonIgnore]
-        public AtorRequest ElencoDTO { get; set; }
-        [JsonIgnore]
-        public ProducaoRequest ProducoesDTO { get; set; }
+     
+
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace filmes_series.Migrations
 {
-    public partial class MigracaoInicial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,6 +43,7 @@ namespace filmes_series.Migrations
                     Estudio = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataLancamento = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    AtorId = table.Column<int>(type: "int", nullable: true),
                     Discriminator = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Temporadas = table.Column<int>(type: "int", maxLength: 255, nullable: true),
@@ -51,6 +52,11 @@ namespace filmes_series.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Producoes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Producoes_Atores_AtorId",
+                        column: x => x.AtorId,
+                        principalTable: "Atores",
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -58,13 +64,14 @@ namespace filmes_series.Migrations
                 name: "AtorProducao",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ElencoId = table.Column<int>(type: "int", nullable: false),
                     ProducoesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AtorProducao", x => new { x.Id });
+                    table.PrimaryKey("PK_AtorProducao", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AtorProducao_Atores_ElencoId",
                         column: x => x.ElencoId,
@@ -104,6 +111,11 @@ namespace filmes_series.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AtorProducao_ElencoId",
+                table: "AtorProducao",
+                column: "ElencoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AtorProducao_ProducoesId",
                 table: "AtorProducao",
                 column: "ProducoesId");
@@ -112,6 +124,11 @@ namespace filmes_series.Migrations
                 name: "IX_Categorias_ProducaoId",
                 table: "Categorias",
                 column: "ProducaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Producoes_AtorId",
+                table: "Producoes",
+                column: "AtorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -123,10 +140,10 @@ namespace filmes_series.Migrations
                 name: "Categorias");
 
             migrationBuilder.DropTable(
-                name: "Atores");
+                name: "Producoes");
 
             migrationBuilder.DropTable(
-                name: "Producoes");
+                name: "Atores");
         }
     }
 }

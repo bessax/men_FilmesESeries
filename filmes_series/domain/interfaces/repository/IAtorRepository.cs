@@ -5,6 +5,6 @@ namespace filmes_series.domain.interfaces.repository
 {
     public interface IAtorRepository :IBaseRepository<Ator>,IDisposable
     {
-
+        public List<Ator> ObterTodos();
     }
 }

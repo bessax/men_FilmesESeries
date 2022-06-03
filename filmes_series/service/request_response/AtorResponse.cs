@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public virtual List<ProducaoRequest> ProducoesDTO { get; set; }
+        public virtual List<AtorProducaoResponse> ProducoesDTO { get; set; }
     }
 }
