@@ -4,10 +4,10 @@ namespace filmes_series.service.interfaces
 {
     public interface IProducaoAppService: IDisposable
     {
-        public List<ProducaoRequest> ObterTodosDTO();
-        public ProducaoRequest ObterPorIdDTO(int id);
-        public bool Adicionar(ProducaoRequest _obj);
-        public bool Atualizar(int id, ProducaoRequest _obj);
-        public bool ExcluirDTO(int id);
+        public List<ProducaoResponse> ObterTodosDTO();
+        public ProducaoResponse ObterPorIdDTO(int id);
+        public ProducaoResponse Adicionar(ProducaoRequest _obj);
+        public ProducaoResponse Atualizar(int id, ProducaoRequest _obj);
+        public ProducaoResponse ExcluirDTO(int id);
     }
 }

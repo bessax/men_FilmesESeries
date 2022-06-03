@@ -22,29 +22,33 @@ namespace filmes_series.service.appService
             GC.SuppressFinalize(this);
         }
 
-        public bool Adicionar(AtorRequest _ator)
+        public AtorResponse Adicionar(AtorRequest _ator)
         {
-            return _service.Adicionar(_mapper.Map<AtorRequest, Ator>(_ator));
+            var retorno = _service.Adicionar(_mapper.Map<AtorRequest, Ator>(_ator));
+            return _mapper.Map<Ator,AtorResponse>(retorno);
         }
 
-        public bool Atualizar(int id, AtorRequest _ator)
+        public AtorResponse Atualizar(int id, AtorRequest _ator)
         {
-            return _service.Atualizar(id,_mapper.Map<AtorRequest, Ator>(_ator));
+            var retorno = _service.Atualizar(id,_mapper.Map<AtorRequest, Ator>(_ator));
+            return _mapper.Map<Ator, AtorResponse>(retorno);
         }
 
-        public bool ExcluirDTO(int id)
+        public AtorResponse ExcluirDTO(int id)
         {
-            return _service.Excluir(id);
+            var retorno = _service.Excluir(id);
+            return _mapper.Map<Ator, AtorResponse>(retorno);
         }
 
-        public AtorRequest ObterPorIdDTO(int id)
+        public AtorResponse ObterPorIdDTO(int id)
         {
-            return _mapper.Map<Ator, AtorRequest>(_service.ObterPorId(id));
+            var retorno = _service.ObterPorId(id);
+            return _mapper.Map<Ator, AtorResponse>(retorno);
         }
-        public List<AtorRequest> ObterTodosDTO()
+        public List<AtorResponse> ObterTodosDTO()
         {
             var atores = _service.ObterTodos();
-            List<AtorRequest> atoresDTO = _mapper.Map<List<Ator>, List<AtorRequest>>(atores);
+            List<AtorResponse> atoresDTO = _mapper.Map<List<Ator>, List<AtorResponse>>(atores);
             return atoresDTO;
         }
     }

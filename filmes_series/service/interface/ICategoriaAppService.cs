@@ -4,10 +4,10 @@ namespace filmes_series.service.interfaces
 {
     public interface ICategoriaAppService: IDisposable
     {
-        public List<CategoriaRequest> ObterTodosDTO();
-        public CategoriaRequest ObterPorIdDTO(int id);
-        public bool Adicionar(CategoriaRequest _obj);
-        public bool Atualizar(int id, CategoriaRequest _obj);
-        public bool ExcluirDTO(int id);
+        public List<CategoriaResponse> ObterTodosDTO();
+        public CategoriaResponse ObterPorIdDTO(int id);
+        public CategoriaResponse Adicionar(CategoriaRequest _obj);
+        public CategoriaResponse Atualizar(int id, CategoriaRequest _obj);
+        public CategoriaResponse ExcluirDTO(int id);
     }
 }

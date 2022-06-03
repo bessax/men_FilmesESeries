@@ -22,29 +22,33 @@ namespace filmes_series.service.appService
             GC.SuppressFinalize(this);
         }
 
-        public bool Adicionar(ProducaoRequest _Producao)
-        {
-            return _service.Adicionar(_mapper.Map<ProducaoRequest, Producao>(_Producao));
+        public ProducaoResponse Adicionar(ProducaoRequest _Producao)
+        {   
+            var retorno = _service.Adicionar(_mapper.Map<ProducaoRequest, Producao>(_Producao));
+            return _mapper.Map<Producao,ProducaoResponse>(retorno);
         }
 
-        public bool Atualizar(int id, ProducaoRequest _Producao)
+        public ProducaoResponse Atualizar(int id, ProducaoRequest _Producao)
         {
-            return _service.Atualizar(id, _mapper.Map<ProducaoRequest, Producao>(_Producao));
+            var retorno = _service.Atualizar(id,_mapper.Map<ProducaoRequest, Producao>(_Producao));
+            return _mapper.Map<Producao, ProducaoResponse>(retorno);
         }
 
-        public bool ExcluirDTO(int id)
+        public ProducaoResponse ExcluirDTO(int id)
         {
-            return _service.Excluir(id);
+            var retorno = _service.Excluir(id);
+            return _mapper.Map<Producao, ProducaoResponse>(retorno);
         }
 
-        public ProducaoRequest ObterPorIdDTO(int id)
+        public ProducaoResponse ObterPorIdDTO(int id)
         {
-            return _mapper.Map<Producao, ProducaoRequest>(_service.ObterPorId(id));
+            var retorno = _service.ObterPorId(id);
+            return _mapper.Map<Producao, ProducaoResponse>(retorno);
         }
-        public List<ProducaoRequest> ObterTodosDTO()
+        public List<ProducaoResponse> ObterTodosDTO()
         {
             var producoes = _service.ObterTodos();
-            List<ProducaoRequest> producoesDTO = _mapper.Map<List<Producao>, List<ProducaoRequest>>(producoes);
+            List<ProducaoResponse> producoesDTO = _mapper.Map<List<Producao>, List<ProducaoResponse>>(producoes);
             return producoesDTO;
         }
 

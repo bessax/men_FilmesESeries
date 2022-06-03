@@ -2,12 +2,13 @@
 
 namespace filmes_series.domain.entity;
 
-public abstract class Producao
+public class Producao
 {
     public Producao()
     {
         this.Categorias = new List<Categoria>();
         this.Elenco = new List<Ator>();
+      
     }
     public int Id { get; set; }
 
@@ -26,4 +27,7 @@ public abstract class Producao
     public DateTime? DataLancamento { get; set; }
     public virtual List<Ator> Elenco { get; set; }
     public virtual List<Categoria> Categorias { get; set; }
+
+   public ICollection<AtorProducao> AtorProducao { get; set; }
+
 }

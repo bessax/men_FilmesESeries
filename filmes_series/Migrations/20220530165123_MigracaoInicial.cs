@@ -58,12 +58,13 @@ namespace filmes_series.Migrations
                 name: "AtorProducao",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false),
                     ElencoId = table.Column<int>(type: "int", nullable: false),
                     ProducoesId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AtorProducao", x => new { x.ElencoId, x.ProducoesId });
+                    table.PrimaryKey("PK_AtorProducao", x => new { x.Id });
                     table.ForeignKey(
                         name: "FK_AtorProducao_Atores_ElencoId",
                         column: x => x.ElencoId,

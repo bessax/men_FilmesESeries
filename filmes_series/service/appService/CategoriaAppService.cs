@@ -23,29 +23,33 @@ namespace filmes_series.service.appService
             GC.SuppressFinalize(this);
         }
 
-        public bool Adicionar(CategoriaRequest _Categoria)
+        public CategoriaResponse Adicionar(CategoriaRequest _Categoria)
         {
-            return _service.Adicionar(_mapper.Map<CategoriaRequest, Categoria>(_Categoria));
+            var retorno = _service.Adicionar(_mapper.Map<CategoriaRequest, Categoria>(_Categoria));
+            return _mapper.Map<Categoria,CategoriaResponse>(retorno);
         }
 
-        public bool Atualizar(int id, CategoriaRequest _Categoria)
+        public CategoriaResponse Atualizar(int id, CategoriaRequest _Categoria)
         {
-            return _service.Atualizar(id, _mapper.Map<CategoriaRequest, Categoria>(_Categoria));
+            var retorno = _service.Atualizar(id,_mapper.Map<CategoriaRequest, Categoria>(_Categoria));
+            return _mapper.Map<Categoria, CategoriaResponse>(retorno); 
         }
 
-        public bool ExcluirDTO(int id)
+        public CategoriaResponse ExcluirDTO(int id)
         {
-            return _service.Excluir(id);
+            var retorno = _service.Excluir(id);
+            return _mapper.Map<Categoria, CategoriaResponse>(retorno);
         }
 
-        public CategoriaRequest ObterPorIdDTO(int id)
+        public CategoriaResponse ObterPorIdDTO(int id)
         {
-            return _mapper.Map<Categoria, CategoriaRequest>(_service.ObterPorId(id));
+            var retorno = _service.ObterPorId(id);
+            return _mapper.Map<Categoria, CategoriaResponse>(retorno);
         }
-        public List<CategoriaRequest> ObterTodosDTO()
+        public List<CategoriaResponse> ObterTodosDTO()
         {
             var categorias = _service.ObterTodos();
-            List<CategoriaRequest> categoriasDTO = _mapper.Map<List<Categoria>, List<CategoriaRequest>>(categorias);
+            List<CategoriaResponse> categoriasDTO = _mapper.Map<List<Categoria>, List<CategoriaResponse>>(categorias);
             return categoriasDTO;
         }
 

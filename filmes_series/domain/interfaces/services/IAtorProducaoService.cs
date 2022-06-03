@@ -1,6 +1,9 @@
-﻿namespace filmes_series.domain.interfaces.services
+﻿using filmes_series._base.baseservice;
+using filmes_series.domain.entity;
+
+namespace filmes_series.domain.interfaces.services
 {
-    public interface IAtorProducaoService:IDisposable
+    public interface IAtorProducaoService: IBaseService<AtorProducao>,IDisposable
     {
     }
 }

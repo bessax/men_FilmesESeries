@@ -23,14 +23,17 @@ public static class ConfigureDIConfig
         services.AddTransient<IAtorRepository, AtorRepository>();
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         services.AddTransient<IProducaoRepository, ProducoesRepository>();
+        services.AddTransient<IAtorProducaoRepository, AtorProducaoRepository>();
 
         services.AddTransient<IAtorService, AtorService>();
         services.AddTransient<ICategoriaService, CategoriaService>();
-        services.AddTransient<IProducaoService, ProducaoService>();
+        services.AddTransient<IProducaoService, ProducaoService>();        
+        services.AddTransient<IAtorProducaoService, AtorProducaoService>();
 
         services.AddTransient<IAtorAppService, AtorAppService>();
         services.AddTransient<ICategoriaAppService, CategoriaAppService>();
         services.AddTransient<IProducaoAppService, ProducaoAppService>();
+        services.AddTransient<IAtorProducaoAppService, AtorProducaoAppService>();
     }
 
    

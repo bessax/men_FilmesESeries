@@ -3,51 +3,52 @@ using Microsoft.EntityFrameworkCore;
 
 namespace filmes_series._base.baserepository
 {
-    public class BaseRepository<TEntity>:IBaseRepository<TEntity> where TEntity:class
+    public class BaseRepository<T>:IBaseRepository<T> where T:class
     {
         private readonly DbContext _context;
-        private DbSet<TEntity> dbset;
+        private DbSet<T> dbset;
 
         public BaseRepository(DbContext context)
         {
             _context = context;
-            dbset = _context.Set<TEntity>();
+            dbset = _context.Set<T>();
         }
-        public virtual bool Adicionar(TEntity _entity)
+        public virtual T Adicionar(T _entity)
         {
             try
             {
                 _context.AddAsync(_entity);
                 _context.SaveChanges();
 
-                return true;
+                return _entity;
             }
             catch
             {
-                return false;
+                throw new Exception("Erro ao adicionar.");
             }
         }
 
-        public virtual bool Atualizar(int id, TEntity _obj)
+        public virtual T Atualizar(int id, T _obj)
         {
             try { 
 
                 var __obj = dbset.Find(id);
-                if (__obj != null)
+                if (__obj == null)
                 {
-                    return false;
+                    throw new Exception("Não encontrado.");
                 }
-                    _context.Entry(_obj).State = EntityState.Modified;
-                    _context.SaveChanges();
-                    return true;
+                _context.Entry(__obj).State = EntityState.Detached;
+                _context.Entry(_obj).State = EntityState.Modified;
+                _context.SaveChanges();
+               return _obj;
             }
             catch
             {
-                return false;
+                throw new Exception("Erro ao atualizar."); 
             }
         }
 
-        public virtual bool Excluir(int id)
+        public virtual T Excluir(int id)
         {
             var _obj = dbset.Find(id);
 
@@ -55,19 +56,19 @@ namespace filmes_series._base.baserepository
             {
                 if (_obj == null)
                 {
-                    return false;
+                    throw new Exception("Não encontrado.");
                 }
                 dbset.Remove(_obj);
                 _context.SaveChanges();
-                return true;
+                return _obj;
             }
-            catch
+            catch(Exception ex)
             {
-                return false;
+                throw new Exception($"Erro ao Excluir.{ex.Message}");
             }
         }
 
-        public virtual List<TEntity> FindAll()
+        public virtual List<T> FindAll()
         {
             try
             {
@@ -79,14 +80,14 @@ namespace filmes_series._base.baserepository
             }
         }
 
-        public virtual TEntity GetById(int id)
+        public virtual T GetById(int id)
         {
             try
             {
                 var _obj = dbset.Find(id);
                 if (_obj == null)
                 {
-                    return null;
+                    throw new Exception("Não encontrado.");
                 }
                 return _obj;
             }
