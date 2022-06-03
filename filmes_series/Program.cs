@@ -1,12 +1,15 @@
+using filmes_series.mapper;
 using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 using filmes_series.startup;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 //DI
 builder.Services.ConfigureDI();
+
+//Mapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 //Habilitando o swagger
 builder.Services.AddEndpointsApiExplorer();

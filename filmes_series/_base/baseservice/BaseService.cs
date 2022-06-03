@@ -12,27 +12,27 @@ namespace filmes_series._base.baseservice
         {
             repository = _repository;
         }
-        public bool Adicionar(TEntity _obj)
+        public virtual bool Adicionar(TEntity _obj)
         {
             return repository.Adicionar(_obj);
         }
 
-        public bool Atualizar(int id, TEntity _obj)
+        public virtual bool Atualizar(int id, TEntity _obj)
         {
             return repository.Atualizar(id, _obj);
         }
 
-        public bool Excluir(int id)
+        public virtual bool Excluir(int id)
         {
             return repository.Excluir(id);
         }
 
-        public TEntity ObterPorId(int id)
+        public virtual TEntity ObterPorId(int id)
         {
             return repository.GetById(id);
         }
 
-        public List<TEntity> ObterTodos()
+        public virtual List<TEntity> ObterTodos()
         {
             return repository.FindAll();
         }

@@ -1,8 +1,5 @@
-﻿using filmes_series._base.baserepository;
-using filmes_series._base.baseservice;
-using filmes_series.data.context;
+﻿using filmes_series.data.context;
 using filmes_series.data.repository;
-using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.repository;
 using filmes_series.domain.interfaces.services;
 using filmes_series.domain.service;
@@ -16,6 +13,7 @@ public static class ConfigureDIConfig
     public static void ConfigureDI(this IServiceCollection services)
     {
         ConfigureAppServices(services);
+        
     }
 
     internal static void ConfigureAppServices(IServiceCollection services)
@@ -34,4 +32,6 @@ public static class ConfigureDIConfig
         services.AddTransient<ICategoriaAppService, CategoriaAppService>();
         services.AddTransient<IProducaoAppService, ProducaoAppService>();
     }
+
+   
 }

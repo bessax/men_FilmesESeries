@@ -13,11 +13,11 @@ namespace filmes_series._base.baserepository
             _context = context;
             dbset = _context.Set<TEntity>();
         }
-        public bool Adicionar(TEntity _entity)
+        public virtual bool Adicionar(TEntity _entity)
         {
             try
             {
-                dbset.Add(_entity);
+                _context.AddAsync(_entity);
                 _context.SaveChanges();
 
                 return true;
@@ -28,7 +28,7 @@ namespace filmes_series._base.baserepository
             }
         }
 
-        public bool Atualizar(int id, TEntity _obj)
+        public virtual bool Atualizar(int id, TEntity _obj)
         {
             try { 
 
@@ -47,7 +47,7 @@ namespace filmes_series._base.baserepository
             }
         }
 
-        public bool Excluir(int id)
+        public virtual bool Excluir(int id)
         {
             var _obj = dbset.Find(id);
 
@@ -67,7 +67,7 @@ namespace filmes_series._base.baserepository
             }
         }
 
-        public List<TEntity> FindAll()
+        public virtual List<TEntity> FindAll()
         {
             try
             {
@@ -79,7 +79,7 @@ namespace filmes_series._base.baserepository
             }
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int id)
         {
             try
             {

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.services;
-using filmes_series.mapper;
 using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 
@@ -10,11 +9,11 @@ namespace filmes_series.service.appService
     public class AtorAppService:IAtorAppService
     {
         private readonly IAtorService _service;
-        private readonly Mapper _mapper;
-        public AtorAppService(IAtorService service)
+        private readonly IMapper _mapper;
+        public AtorAppService(IAtorService service,IMapper mapper)
         {
             _service = service;
-            _mapper = new(AutoMapperConfig<Ator, AtorRequest>.ConfigureMapper());
+            _mapper = mapper;
         }
 
         public void Dispose()

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.services;
-using filmes_series.mapper;
 using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 
@@ -10,11 +9,11 @@ namespace filmes_series.service.appService
     public class ProducaoAppService : IProducaoAppService
     {
         private readonly IProducaoService _service;
-        private readonly Mapper _mapper;
-        public ProducaoAppService(IProducaoService service)
+        private readonly IMapper _mapper;
+        public ProducaoAppService(IProducaoService service, IMapper mapper)
         {
-            _service = service;            
-            _mapper = new(new(AutoMapperConfig<Producao, ProducaoRequest>.ConfigureMapper());
+            _service = service;
+            _mapper = mapper;
         }
 
         public void Dispose()

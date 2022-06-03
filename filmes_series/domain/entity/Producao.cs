@@ -25,6 +25,5 @@ public abstract class Producao
 
     public DateTime? DataLancamento { get; set; }
     public virtual List<Ator> Elenco { get; set; }
-
     public virtual List<Categoria> Categorias { get; set; }
 }

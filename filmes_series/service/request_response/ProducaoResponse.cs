@@ -1,4 +1,6 @@
-﻿namespace filmes_series.service.request_response
+﻿using System.Text.Json.Serialization;
+
+namespace filmes_series.service.request_response
 {
     public class ProducaoResponse
     {
@@ -8,7 +10,9 @@
         public string Diretor { get; set; }
         public string Estudio { get; set; }
         public DateTime? DataLancamento { get; set; }
+        [JsonIgnore]
         public virtual List<AtorRequest> ElencoDTO { get; set; }
+        [JsonIgnore]
         public virtual List<CategoriaRequest> CategoriasDTO { get; set; }
     }
 }
