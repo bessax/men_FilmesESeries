@@ -16,6 +16,6 @@ public class Ator
     public string Nome { get; set; }        
     //public virtual List<Producao> Producoes { get; set; }
 
-    public List<AtorProducao> AtorProducao { get; set; }
+    public virtual List<AtorProducao> AtorProducao { get; set; }
 
 }

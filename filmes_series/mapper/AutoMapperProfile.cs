@@ -13,7 +13,7 @@ namespace filmes_series.mapper
             CreateMap<Producao,ProducaoRequest>();
             CreateMap<AtorProducao, AtorProducaoRequest>();
 
-            CreateMap<Ator, AtorResponse>();
+            CreateMap<Ator, AtorResponse>();            
             CreateMap<Categoria, CategoriaResponse>();
             CreateMap<Producao, ProducaoResponse>();
             CreateMap<AtorProducao, AtorProducaoResponse>();

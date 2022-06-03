@@ -18,8 +18,11 @@ var app = builder.Build();
 
 app.UseSwagger();
 
-app.AddEndpoints();
-
+//Endpoints
+app.AddEndpointsAtor();
+app.AddEndpointsCategoria();
+app.AddEndpointsProducao();
+app.AddEndpointsAtorProducao();
 
 app.UseSwaggerUI(
     c =>

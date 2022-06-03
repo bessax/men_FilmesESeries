@@ -47,8 +47,8 @@ namespace filmes_series.service.appService
         }
         public List<AtorResponse> ObterTodosDTO()
         {
-            var atores = _service.ObterTodos();
-            List<AtorResponse> atoresDTO = _mapper.Map<List<Ator>, List<AtorResponse>>(atores);
+            var atores = _service.ObterTodos();            
+            List <AtorResponse> atoresDTO = _mapper.Map<List<Ator>, List<AtorResponse>>(atores);
             return atoresDTO;
         }
     }

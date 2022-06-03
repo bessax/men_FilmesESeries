@@ -29,6 +29,6 @@ public class Producao
     //public virtual List<Ator> Elenco { get; set; }
     public virtual List<Categoria> Categorias { get; set; }
 
-    public List<AtorProducao> AtorProducao { get; set; }
+    public virtual List<AtorProducao> AtorProducao { get; set; }
 
 }

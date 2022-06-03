@@ -14,11 +14,11 @@ namespace filmes_series.data.repository
             context = _context;
          }
 
-        public List<Ator> ObterTodos()
+        public override List<Ator> FindAll()
         {
             return context.Atores.Include(x=>x.AtorProducao)
                                     .ThenInclude(y=>y.Producoes).ToList();
-                                 
+            
         }
     }
 }
