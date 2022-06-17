@@ -8,14 +8,14 @@ public static class ConfigureEPAtor
 {
     public static void AddEndpointsAtor(this WebApplication app)
     {
-        #region Ator
+        #region Ator        
         app.MapGet("/v1/ator/todos", ([FromServices] IAtorAppService atorAppService) =>
-        {
-            return atorAppService.ObterTodosDTO();
+        {        
+           return atorAppService.ObterTodosDTO();
         });
         app.MapPost("/v1/ator/add", ([FromServices] IAtorAppService atorAppService, [FromBody] AtorRequest atorDTO) =>
         {
-            return atorAppService.Adicionar(atorDTO);
+           return atorAppService.Adicionar(atorDTO);
         });
         app.MapPut("/v1/ator/upd/{id}", ([FromServices]IAtorAppService atorAppService, [FromBody]AtorRequest atorDTO) =>
         {
