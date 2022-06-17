@@ -1,4 +1,5 @@
 ﻿using filmes_series.domain.entity;
+using filmes_series.service.request_response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,16 @@ namespace filmes_seriesTests.Builder
             {
                 Id = 1,
                 Nome = "André"              
+
+            };
+        }
+
+        public AtorRequest BuildRequest()
+        {
+            return new AtorRequest()
+            {
+                Id = 1,
+                Nome = "André"
 
             };
         }
