@@ -1,4 +1,6 @@
-﻿using filmes_series.service.interfaces;
+﻿using filmes_series.data.context;
+using filmes_series.data.repository;
+using filmes_series.service.interfaces;
 using filmes_series.service.request_response;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,7 +31,14 @@ public static class ConfigureEPAtor
         {
             return atorAppService.ExcluirDTO(id);
         });
+
+        app.MapGet("/v1/ator/dapper/{id}", ([FromRoute] int id) =>
+        {
+            AppDbContext context = new AppDbContext();
+            AtorRepository repo = new AtorRepository(context);
+            return repo.GetAtor2(id);
+        });
         #endregion
-       
+
     }
 }

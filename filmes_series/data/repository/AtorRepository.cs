@@ -1,8 +1,11 @@
-﻿using filmes_series._base.baserepository;
+﻿using Dapper;
+using filmes_series._base.baserepository;
 using filmes_series.data.context;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.repository;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
+using System.Data;
 
 namespace filmes_series.data.repository
 {
@@ -20,5 +23,20 @@ namespace filmes_series.data.repository
                                     .ThenInclude(y=>y.Producoes).ToList();
             
         }
+
+        public Ator GetAtor2(int id)
+        {
+            // implementando uma consulta com dapper
+            var conn = context.Database.GetConnectionString();
+            Ator ator = null;
+            var sql = "SELECT * FROM atores WHERE Id=@Id";
+            using (IDbConnection db = new MySqlConnection(conn))
+            {
+                ator = db.Query<Ator>(sql, new {id}).SingleOrDefault();
+            }
+
+            return ator;
+        }
+
     }
 }

@@ -9,7 +9,7 @@ namespace filmes_series.Validator
         {
             RuleFor(a => a.Nome).NotEmpty().WithMessage("Nome não pode ser vazio").
                 MinimumLength(3).WithMessage("Tamanho mínimo 3 caracteres");
-   
+           
         }
     }
 }
