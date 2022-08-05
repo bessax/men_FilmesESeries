@@ -1,11 +1,15 @@
 using filmes_series;
 using filmes_series.Security;
 using filmes_series.startup;
+using filmes_series.Startup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//LogRequest
+ConfigureLogRequest.AddSerialogAPI(builder);
 
 //DI
 builder.Services.ConfigureDI();
