@@ -5,7 +5,16 @@ using Microsoft.EntityFrameworkCore;
 namespace filmes_series.data.context;
 
 public class AppDbContext:DbContext
-{    
+{
+    private readonly ILoggerFactory _loggerFactory;
+    public AppDbContext()
+    {
+
+    }
+    public AppDbContext(ILoggerFactory loggerFactory)
+    {
+        _loggerFactory = loggerFactory;
+    }
     public DbSet<Ator>?Atores { get; set; }
     public DbSet<UserApp>? UserApps { get; set; }
     public DbSet<Categoria>? Categorias { get; set; }
@@ -15,7 +24,8 @@ public class AppDbContext:DbContext
     {
         string conexao = "Server=localhost;DataBase=catalogosFilmesSeries;Uid=root;Pwd=root";
         optionsBuilder.UseLazyLoadingProxies().UseMySql(conexao, ServerVersion.AutoDetect(conexao));
-                     
+
+        optionsBuilder.UseLoggerFactory(_loggerFactory);
     }
     
 }

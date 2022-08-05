@@ -14,7 +14,7 @@ public static class ConfigureEPAAuth
 {
     public static void AddEndpointsAuth(this WebApplication app)
     {
-        #region Auth        
+        #region Auth       
         
         app.MapPost("/v1/auth/add", ([FromServices] IUserAppAppService userAppAppService, [FromBody] UserApp model) =>
         {
@@ -27,10 +27,10 @@ public static class ConfigureEPAAuth
 
             if (userAux == null)
             {
-                Task.FromResult(AuthenticateResult.Fail("Usuário ou Senha inválidos."));
+                
+                //Retornar mensagem
             }
 
-            
             UserApp user = new UserApp();
             user.UserName = userAux.UserName;
             user.Senha = userAux.Senha;

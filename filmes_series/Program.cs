@@ -17,24 +17,27 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddEndpointsApiExplorer();
 
 //Token
-//var key = Encoding.ASCII.GetBytes(ConfigSeg.Secret);
-//builder.Services.AddAuthentication(x =>
-//{
-//    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//}).AddJwtBearer(x =>
-//{
-//    x.RequireHttpsMetadata = false;
-//    x.SaveToken = true;
-//    x.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(key),
-//        ValidateIssuer = false,
-//        ValidateAudience = false
-//    };
 
-//});
+var key = Encoding.ASCII.GetBytes(ConfigSeg.Secret);
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+
+});
+
+
 
 //Adicionando Endpoints
 builder.Services.AddSwaggerGen(c =>
@@ -72,6 +75,9 @@ app.UseSwaggerUI(
     }
 );
 
+app.UseCors(op => op.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod());
+app.UseAuthentication();
+app.UseAuthorization();
 //app.Use(async (context, next) =>
 //{
 //    var JWToken = context.Session.GetString("JWToken");
