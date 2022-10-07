@@ -15,15 +15,8 @@ namespace filmes_series.data.repository
         public AtorRepository(AppDbContext _context):base(_context)
         {
             context = _context;
-         }
-
-        public override List<Ator> FindAll()
-        {
-            return context.Atores.Include(x=>x.AtorProducao)
-                                    .ThenInclude(y=>y.Producoes).ToList();
-            
         }
-
+           
         public Ator GetAtor2(int id)
         {
             // implementando uma consulta com dapper

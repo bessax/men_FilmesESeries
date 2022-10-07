@@ -4,6 +4,7 @@ using filmes_series.startup;
 using filmes_series.Startup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using series_series.startup;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,6 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddEndpointsApiExplorer();
 
 //Token
-
 var key = Encoding.ASCII.GetBytes(ConfigSeg.Secret);
 builder.Services.AddAuthentication(x =>
 {
@@ -45,19 +45,18 @@ builder.Services.AddAuthentication(x =>
 
 //Adicionando Endpoints
 builder.Services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info { Title = "Filmes e Séries WEBAPI [Mentoria]", Version = "v1" });
-                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-                c.AddSecurityDefinition("bearer",
-                                        new ApiKeyScheme
-                                        {
-                                            In = "header",
-                                            Description = "Autenticação baseada em Json Web Token (JWT)",
-                                            Name = "Authorization",
-                                            Type = "apiKey"
-                                        });
-            });
-
+{
+    c.SwaggerDoc("v1", new Info { Title = "Filmes e Séries WEBAPI [Mentoria]", Version = "v1" });
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+    c.AddSecurityDefinition("bearer",
+                            new ApiKeyScheme
+                            {
+                                In = "header",
+                                Description = "Autenticação baseada em Json Web Token (JWT)",
+                                Name = "Authorization",
+                                Type = "apiKey"
+                            });
+});
 
 var app = builder.Build();
 
@@ -68,8 +67,8 @@ app.AddEndpointsUserApp();
 app.AddEndpointsAuth();
 app.AddEndpointsAtor();
 app.AddEndpointsCategoria();
-app.AddEndpointsProducao();
-app.AddEndpointsAtorProducao();
+app.AddEndpointsFilme();
+app.AddEndpointsSerie();
 
 app.UseSwaggerUI(
     c =>

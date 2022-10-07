@@ -3,8 +3,7 @@ using filmes_series.domain.entity;
 
 namespace filmes_series.domain.interfaces.services
 {
-    public interface IProducaoService: IBaseService<Producao>, IDisposable
-    {
-
+    public interface IFilmeService:IBaseService<Filme>,IDisposable
+    {  
     }
 }

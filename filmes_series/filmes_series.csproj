@@ -4,7 +4,23 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Helpers\**" />
+    <Content Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Repository\ProducoesRepository.cs" />
+    <Compile Remove="Domain\Interfaces\services\IAtorProducaoService.cs" />
+    <Compile Remove="Migrations\20220919193631_Inicial.cs" />
+    <Compile Remove="Migrations\20220919193631_Inicial.Designer.cs" />
+    <Compile Remove="Migrations\AppDbContextModelSnapshot.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
@@ -40,7 +56,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>

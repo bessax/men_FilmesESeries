@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using filmes_series.Service.Request_response;
+using System.Text.Json.Serialization;
 
 namespace filmes_series.service.request_response
 {
@@ -6,6 +7,9 @@ namespace filmes_series.service.request_response
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-                
+
+        public  virtual ICollection<FilmeRequest> ProducaoFilme { get; set; }
+        public virtual ICollection<SerieRequest> ProducaoSerie { get; set; }
+
     }
 }

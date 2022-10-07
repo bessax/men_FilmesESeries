@@ -1,4 +1,5 @@
 ﻿using filmes_series._base.baserepository;
+using filmes_series.filmes_series.Base.Baserepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace filmes_series._base.baseservice

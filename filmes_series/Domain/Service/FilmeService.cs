@@ -7,10 +7,10 @@ using filmes_series.domain.interfaces.services;
 
 namespace filmes_series.domain.service
 {
-    public class AtorProducaoService : BaseService<AtorProducao>, IAtorProducaoService
+    public class FilmeService :BaseService<Filme>,IFilmeService
     {
-        private readonly IAtorProducaoRepository _repository;
-        public AtorProducaoService(IAtorProducaoRepository repository):base(repository)
+        private readonly IFilmeRepository _repository;
+        public FilmeService(IFilmeRepository repository):base(repository)
         {
             _repository = repository;
         }

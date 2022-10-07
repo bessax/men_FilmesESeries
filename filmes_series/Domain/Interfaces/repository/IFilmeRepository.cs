@@ -3,7 +3,7 @@ using filmes_series.filmes_series.Base.Baserepository;
 
 namespace filmes_series.domain.interfaces.repository
 {
-    public interface IAtorRepository :IBaseRepository<Ator>,IDisposable
+    public interface IFilmeRepository :IBaseRepository<Filme>,IDisposable
     {
    
     }

@@ -1,4 +1,4 @@
-﻿namespace filmes_series._base.baserepository;
+﻿namespace filmes_series.filmes_series.Base.Baserepository;
 
 public interface IBaseRepository<T> where T : class
 {
@@ -7,5 +7,5 @@ public interface IBaseRepository<T> where T : class
     public T Adicionar(T _obj);
     public T Atualizar(int id, T _obj);
     public T Excluir(int id);
-  
+
 }

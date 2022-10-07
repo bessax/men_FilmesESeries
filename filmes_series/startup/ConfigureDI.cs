@@ -6,6 +6,7 @@ using filmes_series.domain.interfaces.services;
 using filmes_series.domain.service;
 using filmes_series.service.appService;
 using filmes_series.service.interfaces;
+using Series_series.service.appService;
 
 namespace filmes_series.startup;
 
@@ -24,21 +25,21 @@ public static class ConfigureDIConfig
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
 );
         services.AddTransient<IAtorRepository, AtorRepository>();
+        services.AddTransient<IFilmeRepository, FilmeRepository>();
+        services.AddTransient<ISerieRepository, SerieRepository>();
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-        services.AddTransient<IProducaoRepository, ProducoesRepository>();
-        services.AddTransient<IAtorProducaoRepository, AtorProducaoRepository>();
         services.AddTransient<IUserAppRepository, UserAppRepository>();
         
         services.AddTransient<IAtorService, AtorService>();
-        services.AddTransient<ICategoriaService, CategoriaService>();
-        services.AddTransient<IProducaoService, ProducaoService>();        
-        services.AddTransient<IAtorProducaoService, AtorProducaoService>();
+        services.AddTransient<IFilmeService, FilmeService>();
+        services.AddTransient<ISerieService, SerieService>();
+        services.AddTransient<ICategoriaService, CategoriaService>();             
         services.AddTransient<IUserAppService, UserAppService>();
 
         services.AddTransient<IAtorAppService, AtorAppService>();
+        services.AddTransient<IFilmeAppService, FilmeAppService>();
+        services.AddTransient<ISerieAppService, SerieAppService>();
         services.AddTransient<ICategoriaAppService, CategoriaAppService>();
-        services.AddTransient<IProducaoAppService, ProducaoAppService>();
-        services.AddTransient<IAtorProducaoAppService, AtorProducaoAppService>();
         services.AddTransient<IUserAppAppService, UserAppAppService>();
     }
 

@@ -13,23 +13,23 @@ public static class ConfigureEPAtor
     {
         #region Ator
         
-        app.MapGet("/v1/ator/todos", [Authorize] ([FromServices] IAtorAppService atorAppService) =>
+        app.MapGet("/v1/ator/todos",  ([FromServices] IAtorAppService atorAppService) =>
         {        
            return atorAppService.ObterTodosDTO();
         });
-        app.MapPost("/v1/ator/add", [Authorize] ([FromServices] IAtorAppService atorAppService, [FromBody] AtorRequest atorDTO) =>
+        app.MapPost("/v1/ator/add", ([FromServices] IAtorAppService atorAppService, [FromBody] AtorRequest atorDTO) =>
         {
            return atorAppService.Adicionar(atorDTO);
         });
-        app.MapPut("/v1/ator/upd/{id}", [Authorize] ([FromServices]IAtorAppService atorAppService, [FromBody]AtorRequest atorDTO) =>
+        app.MapPut("/v1/ator/upd/{id}",  ([FromServices]IAtorAppService atorAppService, [FromBody]AtorRequest atorDTO) =>
         {
             return atorAppService.Atualizar(atorDTO.Id, atorDTO);
         });
-        app.MapGet("/v1/ator/{id}", [Authorize] ([FromServices] IAtorAppService atorAppService, [FromRoute] int id) =>
+        app.MapGet("/v1/ator/{id}",  ([FromServices] IAtorAppService atorAppService, [FromRoute] int id) =>
         {
             return atorAppService.ObterPorIdDTO(id);
         });
-        app.MapGet("/v1/ator/del/{id}", [Authorize] ([FromServices] IAtorAppService atorAppService, [FromRoute] int id) =>
+        app.MapGet("/v1/ator/del/{id}",  ([FromServices] IAtorAppService atorAppService, [FromRoute] int id) =>
         {
             return atorAppService.ExcluirDTO(id);
         });

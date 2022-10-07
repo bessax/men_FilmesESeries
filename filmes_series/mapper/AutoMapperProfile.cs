@@ -2,6 +2,7 @@
 using filmes_series.domain.entity;
 using filmes_series.Domain.Entity;
 using filmes_series.service.request_response;
+using filmes_series.Service.Request_response;
 
 namespace filmes_series.mapper
 {
@@ -11,31 +12,31 @@ namespace filmes_series.mapper
         {
             CreateMap<Ator,AtorRequest>();
             CreateMap<Categoria,CategoriaRequest>();
-            CreateMap<Producao,ProducaoRequest>();
-            CreateMap<AtorProducao, AtorProducaoRequest>();
+
+            CreateMap<Filme, FilmeRequest>();
+            CreateMap<Serie, SerieRequest>();
 
             CreateMap<UserApp, UserAppRequest>();
        
-
             CreateMap<Ator, AtorResponse>();            
-            CreateMap<Categoria, CategoriaResponse>();
-            CreateMap<Producao, ProducaoResponse>();
-            CreateMap<AtorProducao, AtorProducaoResponse>();
-
+            CreateMap<Categoria, CategoriaResponse>();            
+            
             CreateMap<UserApp, UserAppResponse>();
 
             CreateMap<AtorRequest,Ator>();
             CreateMap<CategoriaRequest,Categoria>();
-            CreateMap<ProducaoRequest,Producao>();
-            CreateMap<AtorProducaoRequest, AtorProducao>();
+
+            CreateMap<FilmeRequest, Filme>();
+            CreateMap<SerieRequest, Serie>();
+
+            CreateMap<FilmeResponse, Filme>();
+            CreateMap<SerieResponse, Serie>();
 
             CreateMap<UserAppResponse,UserApp > ();
 
             CreateMap<AtorResponse, Ator>();
             CreateMap<CategoriaResponse, Categoria>();
-            CreateMap<ProducaoResponse, Producao>();
-            CreateMap<AtorProducaoResponse, AtorProducao>();
-
+                    
             CreateMap<UserAppRequest, UserApp>();
         }
     }
