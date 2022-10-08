@@ -6,9 +6,10 @@ namespace filmes_series.Service.Request_response
     {
         public FilmeResponse()
         {
-            this.Categoria = new CategoriaResponse();
+            
             this.ElencoFilme = new List<AtorResponse>();
         }
+
         public virtual CategoriaResponse Categoria { get; set; }
         public virtual ICollection<AtorResponse> ElencoFilme { get; set; }
     }

@@ -9,14 +9,30 @@ using System.Data;
 
 namespace filmes_series.data.repository
 {
-    public class FilmeRepository : BaseRepository<Filme>,IFilmeRepository
+    public class SerieRepository : BaseRepository<Serie>,ISerieRepository
     {
         private AppDbContext context;
-        public FilmeRepository(AppDbContext _context):base(_context)
+        public SerieRepository(AppDbContext _context):base(_context)
         {
             context = _context;
-        }          
-     
+        }
+
+        public override Serie Adicionar(Serie _entity)
+        {
+            var categoria = context.Categorias.FirstOrDefault(c => c.Id == _entity.CategoriaId);
+            var _elenco = new List<Ator>();
+            if (_entity.ElencoSerie != null)
+            {
+
+                foreach (var item in _entity.ElencoSerie)
+                {
+                    _elenco.Add(context.Atores.FirstOrDefault(x => x.Id == item.Id));
+                }
+            }
+            _entity.ElencoSerie = _elenco;
+            _entity.Categoria = categoria;
+            return base.Adicionar(_entity);
+        }
 
     }
 }

@@ -33,7 +33,7 @@ namespace filmes_series._base.baseservice
             return repository.GetById(id);
         }
 
-        public virtual List<TEntity> ObterTodos()
+        public virtual ICollection<TEntity> ObterTodos()
         {
             return repository.FindAll();
         }

@@ -5,7 +5,7 @@ namespace filmes_series.service.interfaces
 {
     public interface ISerieAppService: IDisposable
     {
-        public List<SerieResponse> ObterTodosDTO();
+        public ICollection<SerieResponse> ObterTodosDTO();
         public SerieResponse ObterPorIdDTO(int id);
         public SerieResponse Adicionar(SerieRequest _obj);
         public SerieResponse Atualizar(int id, SerieRequest _obj);

@@ -8,8 +8,10 @@ namespace filmes_series.service.request_response
         public int Id { get; set; }
         public string Nome { get; set; }
 
-        public  virtual ICollection<FilmeRequest> ProducaoFilme { get; set; }
-        public virtual ICollection<SerieRequest> ProducaoSerie { get; set; }
+        //[JsonIgnore]
+        //public virtual ICollection<FilmeRequest> ProducaoFilme { get; set; }
+        //[JsonIgnore]
+        //public virtual ICollection<SerieRequest> ProducaoSerie { get; set; }
 
     }
 }

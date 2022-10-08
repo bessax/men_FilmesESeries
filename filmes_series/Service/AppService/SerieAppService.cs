@@ -45,10 +45,10 @@ namespace Series_series.service.appService
             var retorno = _service.ObterPorId(id);
             return _mapper.Map<Serie, SerieResponse>(retorno);
         }
-        public List<SerieResponse> ObterTodosDTO()
+        public ICollection<SerieResponse> ObterTodosDTO()
         {
             var Seriees = _service.ObterTodos();
-            List<SerieResponse> SerieesDTO = _mapper.Map<List<Serie>, List<SerieResponse>>(Seriees);
+            ICollection<SerieResponse> SerieesDTO = _mapper.Map<ICollection<Serie>, ICollection<SerieResponse>>(Seriees);
             return SerieesDTO;
         }
     }

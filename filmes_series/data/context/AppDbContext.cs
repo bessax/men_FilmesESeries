@@ -27,5 +27,6 @@ public class AppDbContext:DbContext
         optionsBuilder.UseLazyLoadingProxies().UseMySql(conexao, ServerVersion.AutoDetect(conexao));
         optionsBuilder.UseLoggerFactory(_loggerFactory);
     }
-       
+
+   
 }

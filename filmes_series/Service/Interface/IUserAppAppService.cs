@@ -4,7 +4,7 @@ namespace filmes_series.service.interfaces
 {
     public interface IUserAppAppService:IDisposable
     {
-        public List<UserAppResponse> ObterTodosDTO();
+        public ICollection<UserAppResponse> ObterTodosDTO();
         public UserAppResponse ObterPorIdDTO(int id);
         public UserAppResponse ObterPorEmail(string email);
         public UserAppResponse Adicionar(UserAppRequest _userapp);

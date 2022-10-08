@@ -46,10 +46,10 @@ namespace filmes_series.service.appService
             var retorno = _service.ObterPorId(id);
             return _mapper.Map<Filme, FilmeResponse>(retorno);
         }
-        public List<FilmeResponse> ObterTodosDTO()
+        public ICollection<FilmeResponse> ObterTodosDTO()
         {
             var Filmees = _service.ObterTodos();
-            List<FilmeResponse> FilmeesDTO = _mapper.Map<List<Filme>, List<FilmeResponse>>(Filmees);
+            ICollection<FilmeResponse> FilmeesDTO = _mapper.Map<ICollection<Filme>, ICollection<FilmeResponse>>(Filmees);
             return FilmeesDTO;
         }
     }

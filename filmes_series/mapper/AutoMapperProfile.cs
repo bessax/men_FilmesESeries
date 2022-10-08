@@ -15,9 +15,9 @@ namespace filmes_series.mapper
 
             CreateMap<Filme, FilmeRequest>();
             CreateMap<Serie, SerieRequest>();
-
+            CreateMap<Serie, SerieResponse>();
             CreateMap<UserApp, UserAppRequest>();
-       
+            CreateMap<Filme, FilmeResponse>();
             CreateMap<Ator, AtorResponse>();            
             CreateMap<Categoria, CategoriaResponse>();            
             

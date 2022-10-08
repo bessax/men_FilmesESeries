@@ -11,7 +11,7 @@ using filmes_series.data.context;
 namespace filmes_series.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221007230759_Inicial")]
+    [Migration("20221007233345_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

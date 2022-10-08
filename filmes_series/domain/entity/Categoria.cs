@@ -6,8 +6,8 @@ namespace filmes_series.domain.entity;
     {
         public int Id { get; set; }
         [StringLength(255)]
-        public string Nome { get; set; }
+        public string? Nome { get; set; }
         [StringLength(255)]
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
     }
 

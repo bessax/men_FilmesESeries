@@ -69,7 +69,7 @@ namespace filmes_series._base.baserepository
             }
         }
 
-        public virtual List<T> FindAll()
+        public virtual ICollection<T> FindAll()
         {
             try
             {
