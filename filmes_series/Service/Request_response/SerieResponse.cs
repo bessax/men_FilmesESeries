@@ -7,12 +7,12 @@ namespace filmes_series.Service.Request_response
         public SerieResponse()
         {
             this.Categoria = new CategoriaResponse();
-            this.ElencoSerie = new List<CategoriaResponse>();
+            this.ElencoSerie = new List<AtorResponse>();
         }
         
         public int? Temporadas { get; set; }
         public DateTime? DataEncerramento { get; set; }
         public virtual CategoriaResponse Categoria { get; set; }
-        public virtual ICollection<CategoriaResponse> ElencoSerie { get; set; }
+        public virtual ICollection<AtorResponse> ElencoSerie { get; set; }
     }
 }

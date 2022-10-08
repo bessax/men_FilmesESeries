@@ -3,9 +3,6 @@ using filmes_series._base.baserepository;
 using filmes_series.data.context;
 using filmes_series.domain.entity;
 using filmes_series.domain.interfaces.repository;
-using Microsoft.EntityFrameworkCore;
-using MySqlConnector;
-using System.Data;
 
 namespace filmes_series.data.repository
 {
