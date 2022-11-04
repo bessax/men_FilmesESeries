@@ -23,7 +23,8 @@ public class AppDbContext:DbContext
    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string conexao = "Server=localhost;DataBase=catalogosFilmesSeries;Uid=root;Pwd=root";
+        // host.docker.internal para a aplicação no docker acessar o banco da máquina local.
+        string conexao = "Server=host.docker.internal;DataBase=catalogosfilmesseries;Uid=root;Pwd=root";
         optionsBuilder.UseLazyLoadingProxies().UseMySql(conexao, ServerVersion.AutoDetect(conexao));
         optionsBuilder.UseLoggerFactory(_loggerFactory);
     }
